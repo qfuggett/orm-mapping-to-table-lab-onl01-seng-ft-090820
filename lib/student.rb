@@ -11,7 +11,7 @@ class Student
   
   
   def self.create_table
-    sql = <<- SQL
+    sql = <<-SQL
       CREATE TABLE students(
         id INSERT PRIMARY KEY,
         name TEXT,
@@ -23,7 +23,7 @@ class Student
   
   
   def self.drop_table
-    sql = <<- SQL
+    sql = <<-SQL
       DROP TABLE students
       DB[:conn].execute(sql, self.name, self.grade)
 
