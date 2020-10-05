@@ -16,8 +16,7 @@ class Student
         id INSERT PRIMARY KEY,
         name TEXT,
         grade INTEGER
-        )
-    
+        );
     SQL
   end
   
