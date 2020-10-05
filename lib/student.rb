@@ -10,18 +10,21 @@ class Student
   end
   
   
-  def self
-    
-  end
-  
-  
   def self.create_table
+    sql = <<- SQL
+      CREATE TABLE students(
+        id INSERT PRIMARY KEY,
+        name TEXT,
+        grade INTEGER
+        )
+    
+    SQL
   end
   
   
   def self.drop_table
     sql = <<- SQL
-      
+      DROP TABLE students
       DB[:conn].execute(sql, self.name, self.grade)
 
     SQL
@@ -30,13 +33,13 @@ class Student
 
   def save
     sql = <<-SQL
-      INSERT INTO student (name, grade)
+      INSERT INTO students (name, grade)
       VALUES (?, ?)
     SQL
     
     DB[:conn].execute(sql, self.name, self.grade)
     
-    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM student")[0][0]
+    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end
   
   
@@ -45,6 +48,7 @@ class Student
     student.save
     student
   end
+  
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]  
   
